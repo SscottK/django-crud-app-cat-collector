@@ -8,4 +8,6 @@ def home(request):
 
 
 def about(request):
-    return HttpResponse('<h1>This is the about page!</h1>')
+    return render(request, 'about.html')
+
+#class Cat:
