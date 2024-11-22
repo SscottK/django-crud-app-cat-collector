@@ -94,26 +94,34 @@ def add_feeding(request, cat_id):
 class CatCreate(LoginRequiredMixin, CreateView):
     model = Cat
     fields = ['name', 'breed', 'description', 'age']
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+
 #edit cat
 class CatUpdate(LoginRequiredMixin,UpdateView):
     model = Cat
     fields = ['breed', 'description', 'age']
+
+
 #delete cat
 class CatDelete(LoginRequiredMixin, DeleteView):
     model = Cat
     success_url = '/cats/'
+
 
 #create toy
 class ToyCreate(LoginRequiredMixin, CreateView):
     model = Toy
     fields = '__all__'
 
+
 #list of all toys
 class ToyList(LoginRequiredMixin, ListView):
     model = Toy
+
 
 #details of a single toy
 class ToyDetail(LoginRequiredMixin, DetailView):
